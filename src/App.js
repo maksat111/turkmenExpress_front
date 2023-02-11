@@ -13,8 +13,8 @@ function App() {
     <Suspense fallback={<img src={Logo} alt='Loading...' />}>
       <Navbar />
       <Routes>
-        <Route path='/home' element={< Category />} >
-          <Route path='/home/category' element={<Home />} />
+        <Route path='home' element={< Category />} >
+          <Route path='category' element={<Home />} />
         </Route>
       </Routes>
       <Footer />

@@ -5,6 +5,7 @@
     height: inherit;
     box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
     padding: 5px 25px;
+    margin-bottom: 15px;
 }
 
 .navbar-header{
@@ -46,9 +47,9 @@
 }
 
 .navbar-items-container, .navbar-item{
-    display: flex;
     flex-direction: row;
     align-items: center;
+    display: flex;
 }
 
 .navbar-items-container{

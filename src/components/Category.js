@@ -227,7 +227,7 @@ function Category() {
         <div className='category-container'>
             <div className='category-list'>
                 <div className='category-list-header'>
-                    <AiOutlineMenu />
+                    <AiOutlineMenu style={{ color: 'grey', fontSize: '18px' }} />
                     <p>Kategoriyalar</p>
                 </div>
                 {/* <div className='category-list-items'>
@@ -241,10 +241,11 @@ function Category() {
 
                 <Menu
                     style={{
-                        width: 256,
+                        width: 250,
+                        borderRadius: '0 0 10px 10px'
                     }}
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
+                    // defaultSelectedKeys={['1']}
+                    // defaultOpenKeys={['sub1']}
                     mode='vertical'
                     theme='light'
                     items={items}
