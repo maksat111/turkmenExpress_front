@@ -1,3 +1,7 @@
+.footer-container{
+    margin-top: 40px;
+}
+
 .footer-above{
     display: flex;
     flex-direction: row;

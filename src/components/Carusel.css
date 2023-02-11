@@ -5,3 +5,11 @@
 .ant-carousel .slick-prev::before{
     content: '';
 }
+
+.ant-carousel{
+    width: 100%;
+}
+
+.carusel-img{
+    border-radius: 10px;
+}
