@@ -28,4 +28,33 @@
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 50px;
+}
+
+.continue-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #00b252;
+    color: #fff;
+    border: 1px solid #00b252;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 20px;
+    max-width: 200px;
+    padding: 10px 40px;
+    gap: 10px;
+}
+
+.continue-button p{
+    margin: 0
 }

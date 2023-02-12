@@ -61,7 +61,7 @@ const settings = {
 
 const Carusel = () => {
     return (
-        <Carousel draggable arrows={true} {...settings} >
+        <Carousel autoplay draggable arrows={true} {...settings} >
             <img className='carusel-img' src={carousel1} alt='carousel1' />
             <img className='carusel-img' src={carousel2} alt='carousel1' />
             <img className='carusel-img' src={carousel1} alt='carousel1' />

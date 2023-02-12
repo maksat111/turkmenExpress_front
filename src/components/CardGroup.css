@@ -1,0 +1,39 @@
+.group-card-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: space-between;
+    gap: 7px;
+}
+
+.group-name-container{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-name{
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    font-style: normal;
+    color: #101010;
+}
+
+.group-show-all{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 5px 20px 4px;
+    font-weight: 500;
+    font-style: normal;
+    color: #101010;
+    gap: 3px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.group-show-all p{
+    margin: 0;
+    margin-bottom: 3px;
+}
