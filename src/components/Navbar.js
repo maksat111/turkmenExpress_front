@@ -56,7 +56,7 @@ function Navbar() {
         }
     ]
 
-    const baha = sebedim[0].baha.split(' ');
+    const baha = sebedim[0] ? sebedim[0].baha.split(' ') : [0];
     const jemi = sebedim[0].sany * baha[0];
 
     return (
@@ -81,7 +81,7 @@ function Navbar() {
                     <Badge count={sebedim[0].sany} >
                         <AiOutlineShoppingCart style={iconStyle} />
                     </Badge>
-                    <p> {jemi} manat</p>
+                    <p> {jemi ? jemi : '0'} manat</p>
                 </div>
             </div>
             <Drawer
@@ -108,7 +108,7 @@ function Navbar() {
                         </div>
                     </div>
                     <div className='sebet-sargyt-button'>
-                        Sargyr etmek ({jemi}manat)
+                        Sargyr etmek ({jemi ? jemi : '0'}manat)
                     </div>
                 </div>
             </Drawer>

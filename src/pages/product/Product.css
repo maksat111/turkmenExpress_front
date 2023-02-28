@@ -107,7 +107,7 @@ a {
     grid-template-columns: auto auto auto auto auto;
     justify-content: space-between;
     gap: 7px;
-    margin: 35px 0;
+    margin: 25px 0;
 }
 
 .product-category-name {

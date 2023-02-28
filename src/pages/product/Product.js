@@ -84,11 +84,11 @@ function Product() {
     return (
         <div className='product-container'>
             <div className='breadcrump'>
-                <Link to='home/category'>Baş sahypa</Link>
+                <Link to='/home/category'>Baş sahypa</Link>
                 <AiOutlineRight />
-                <Link to='home/product'>Kategoriýalar</Link>
+                <Link to='/home/product'>Kategoriýalar</Link>
                 <AiOutlineRight />
-                <Link to='home/product'>Azyk harytlary</Link>
+                <Link to='/home/product'>Azyk harytlary</Link>
             </div>
             <h2 className='product-category-name'>Azyk harytlary</h2>
             <div className='product-details'>

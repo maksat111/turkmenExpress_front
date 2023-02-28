@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineRight } from 'react-icons/ai';
 import Card from './Card';
 import './CardGroup.css';
@@ -8,10 +9,10 @@ function CardGroup({ groupName }) {
         <div className='card-group-container'>
             <div className='group-name-container'>
                 <p className='group-name'>{groupName}</p>
-                <div className='group-show-all'>
+                <Link to='/home/azyk' className='group-show-all'>
                     <p>Ählisi</p>
                     <AiOutlineRight />
-                </div>
+                </Link>
             </div>
             <div className='group-card-container'>
                 <Card />
