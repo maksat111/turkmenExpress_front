@@ -1,10 +1,30 @@
-import React from 'react';
-import { AiOutlineSearch, AiOutlineClockCircle, AiOutlineGlobal, AiOutlineCustomerService, AiOutlineHeart, AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai'
-import { Badge } from 'antd';
+import { React, useContext, useState } from 'react';
+import { AiOutlineSearch, AiOutlineClockCircle, AiOutlinePlus, AiOutlineMinus, AiOutlineGlobal, AiOutlineCustomerService, AiOutlineHeart, AiOutlineUser, AiOutlineShoppingCart, AiOutlineDelete } from 'react-icons/ai'
+import { Badge, Drawer } from 'antd';
+import { SebedimContext } from "../context/Context";
 import './Navbar.css';
 import Logo from '../images/logo.png';
+import product from '../images/product.webp';
 
 function Navbar() {
+    const { sebedim, Increment, Decrement } = useContext(SebedimContext);
+    const [numberProduct, setNumberProduct] = useState(0);
+
+    const [open, setOpen] = useState(false);
+    const showDrawer = () => {
+        setOpen(true);
+    };
+    const onClose = () => {
+        setOpen(false);
+    };
+    const handleIncrease = () => {
+        setNumberProduct(numberProduct + 1);
+        Increment(2);
+    }
+    const handleDecrease = () => {
+        setNumberProduct(numberProduct - 1);
+        Decrement(2);
+    }
 
     const iconStyle = { color: "red", fontSize: "26px" }
 
@@ -36,6 +56,9 @@ function Navbar() {
         }
     ]
 
+    const baha = sebedim[0].baha.split(' ');
+    const jemi = sebedim[0].sany * baha[0];
+
     return (
         <div className='navbar-container'>
             <div className='navbar-header'>
@@ -54,14 +77,42 @@ function Navbar() {
                         </div>
                     )}
                 </div>
-                <div className='navbar-sebet'>
-                    <Badge count='5' >
+                <div className='navbar-sebet' onClick={showDrawer}>
+                    <Badge count={sebedim[0].sany} >
                         <AiOutlineShoppingCart style={iconStyle} />
                     </Badge>
-                    <p>156.40 manat</p>
+                    <p> {jemi} manat</p>
                 </div>
             </div>
-        </div>
+            <Drawer
+                title={`Sebetdäki harytlar`}
+                placement="right"
+                size='default'
+                onClose={onClose}
+                open={open}
+            >
+                <div className='sebet-container'>
+                    <div className='sebet-card'>
+                        <img src={product} alt='product' />
+                        <div className='sebet-name-and-product'>
+                            <p className='sebet-product-name'>Чай черный Ahmad Tea English Tea No.1 25 пакетиков</p>
+                            <p className='sebet-product-price'>35 manat</p>
+                        </div>
+                        <div className='sebet-increaseDecrease'>
+                            <AiOutlineMinus className='sebet-increase-decrease-icons' onClick={handleDecrease} />
+                            {numberProduct}
+                            <AiOutlinePlus className='sebet-increase-decrease-icons' onClick={handleIncrease} />
+                        </div>
+                        <div className='delete-icon-container'>
+                            <AiOutlineDelete className='delete-icon' />
+                        </div>
+                    </div>
+                    <div className='sebet-sargyt-button'>
+                        Sargyr etmek ({jemi}manat)
+                    </div>
+                </div>
+            </Drawer>
+        </div >
     );
 }
 

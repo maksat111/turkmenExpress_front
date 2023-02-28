@@ -16,7 +16,7 @@ const SampleNextArrow = props => {
                 fontSize: '20px',
                 lineHeight: '1.5715',
                 left: '95%',
-                height: '100%'
+                height: 'inherit',
             }}
             onClick={onClick}
         >

@@ -1,134 +1,13 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import { Menu } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { MdOutlineFastfood } from 'react-icons/md';
 import './Category.css';
+import { axiosInstance } from '../config/axios';
 
 function Category() {
-
-    // const items = [
-    //     {
-    //         icon: <MdOutlineFastfood />,
-    //         text: 'Azyk harytlar',
-    //         subItems: [
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Alkagolsyz icgiler',
-    //             },
-    //             {
-    //                 text: 'Et we sohrat onumleri',
-    //             },
-    //             {
-    //                 text: 'Suyt onumleri we yumurtga',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //         ]
-    //     },
-    //     {
-    //         icon: <MdOutlineFastfood />,
-    //         text: 'Azyk harytlar',
-    //         subItems: [
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Alkagolsyz icgiler',
-    //             },
-    //             {
-    //                 text: 'Et we sohrat onumleri',
-    //             },
-    //             {
-    //                 text: 'Suyt onumleri we yumurtga',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //         ]
-    //     },
-    //     {
-    //         icon: <MdOutlineFastfood />,
-    //         text: 'Azyk harytlar',
-    //         subItems: [
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Alkagolsyz icgiler',
-    //             },
-    //             {
-    //                 text: 'Et we sohrat onumleri',
-    //             },
-    //             {
-    //                 text: 'Suyt onumleri we yumurtga',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //         ]
-    //     },
-    //     {
-    //         icon: <MdOutlineFastfood />,
-    //         text: 'Azyk harytlar',
-    //         subItems: [
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Alkagolsyz icgiler',
-    //             },
-    //             {
-    //                 text: 'Et we sohrat onumleri',
-    //             },
-    //             {
-    //                 text: 'Suyt onumleri we yumurtga',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //         ]
-    //     },
-    //     {
-    //         icon: <MdOutlineFastfood />,
-    //         text: 'Azyk harytlar',
-    //         subItems: [
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Alkagolsyz icgiler',
-    //             },
-    //             {
-    //                 text: 'Et we sohrat onumleri',
-    //             },
-    //             {
-    //                 text: 'Suyt onumleri we yumurtga',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //             {
-    //                 text: 'Gok onumler miweler',
-    //             },
-    //         ]
-    //     },
-    // ]
+    const [categoryData, setCategoryData] = useState();
 
     function getItem(label, key, icon, children) {
         return {
@@ -139,8 +18,18 @@ function Category() {
         };
     }
 
+    // const getCategory = async () => {
+    //     const data = await axiosInstance.get('library/categories/list');
+    //     // const data = await fetch('http://turkmenexpress.com.tm/api/library/categories/list', { method: 'HEAD', mode: 'no-cors' });
+    //     console.log(data);
+    // }
+
+    // useEffect(() => {
+    //     getCategory();
+    // }, [])
+
     const items = [
-        getItem('Azyk harytlar', 'sub1', <MdOutlineFastfood />, [
+        getItem(<Link to="/home/azyk" className='navbar_item'>Taze yyl harytlary</Link>, 'sub14', <MdOutlineFastfood />, [
             getItem('Suyt onumleri we yumurtga', '1'),
             getItem('Et we sohrat onumleri', '2'),
             getItem('Gok onumler, miweler, otlar', '3'),

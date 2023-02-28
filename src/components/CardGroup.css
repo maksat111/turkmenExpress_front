@@ -31,9 +31,11 @@
     color: #101010;
     gap: 3px;
     box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+    cursor: pointer;
 }
 
 .group-show-all p{
     margin: 0;
     margin-bottom: 3px;
 }
+

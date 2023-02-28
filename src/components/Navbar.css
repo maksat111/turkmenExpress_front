@@ -1,4 +1,4 @@
-.navbar-container{
+.navbar-container {
     display: flex;
     flex-direction: row;
     background-color: #ffffff;
@@ -8,7 +8,7 @@
     margin-bottom: 15px;
 }
 
-.navbar-header{
+.navbar-header {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -16,17 +16,17 @@
     width: 100%;
 }
 
-.navbar-logo-container img{
+.navbar-logo-container img {
     height: 70px;
 }
 
-.navbar-logo-container{
+.navbar-logo-container {
     display: flex;
     align-items: center;
     align-content: center;
 }
 
-.navbar-search-container{
+.navbar-search-container {
     display: flex;
     align-items: center;
     background-color: #f2f5f7;
@@ -37,7 +37,7 @@
     margin: 0 10px;
 }
 
-.navbar-search-container input{
+.navbar-search-container input {
     outline: none;
     border: none;
     background-color: inherit;
@@ -46,37 +46,38 @@
     color: rgb(70, 70, 70);
 }
 
-.navbar-items-container, .navbar-item{
+.navbar-items-container,
+.navbar-item {
     flex-direction: row;
     align-items: center;
     display: flex;
 }
 
-.navbar-items-container{
+.navbar-items-container {
     gap: 20px;
     margin: 0 10px
 }
 
-.navbar-item{
+.navbar-item {
     gap: 5px;
     height: 30px;
     padding-right: 20px;
     cursor: pointer;
 }
 
-.navbar-item p{
+.navbar-item p {
     width: max-content;
     font-size: 17px;
     margin: 0;
 }
 
-.search{
-    font-size: 25px; 
+.search {
+    font-size: 25px;
     color: rgb(119, 118, 118);
     cursor: pointer;
 }
 
-.navbar-sebet{
+.navbar-sebet {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -87,9 +88,100 @@
     cursor: pointer;
 }
 
-.navbar-sebet p{
+.navbar-sebet p {
     width: max-content;
     margin: 0;
     font-weight: 600;
     color: rgb(56, 54, 54);
+}
+
+.sebet-card {
+    display: flex;
+    flex-direction: row;
+}
+
+.sebet-card img {
+    width: 75px;
+    margin-right: 3px;
+}
+
+.sebet-product-name {
+    margin-bottom: 4px;
+    padding-top: 7px;
+    font-weight: 600;
+    font-size: 14px;
+    height: 40px;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.sebet-product-price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    color: #101010;
+    margin: auto;
+}
+
+.sebet-increaseDecrease {
+    display: flex;
+    gap: 5px;
+    background-color: #00b252;
+    width: fit-content;
+    font-size: 18px;
+    color: #fff;
+    height: 30px;
+    align-items: center;
+    padding: 2px 7px 2px 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 12px;
+    margin: auto;
+}
+
+.sebet-increase-decrease-icons {
+    font-size: 17px;
+}
+
+.delete-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    background: red;
+    color: white;
+    padding: 4px 5px;
+    border-radius: 7px;
+    margin: auto 0 auto 10px;
+}
+
+.delete-icon {
+    font-size: 23px;
+    margin-bottom: 3px;
+}
+
+.sebet-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.sebet-sargyt-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #00b252;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    color: #f9f9f9;
+    height: 35px;
+    padding: 0 0 5px 0;
 }
