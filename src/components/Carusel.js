@@ -1,9 +1,8 @@
-import React from 'react'
+import { React, useState, useEffect } from 'react'
 import { Carousel } from 'antd';
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
+import { axiosInstance } from '../config/axios';
 import './Carusel.css';
-import carousel1 from '../images/carousel1.webp';
-import carousel2 from '../images/carousel2.webp';
 
 const SampleNextArrow = props => {
     const { className, style, onClick } = props
@@ -59,13 +58,18 @@ const settings = {
     prevArrow: <SamplePrevArrow />
 }
 
+
+
 const Carusel = () => {
+    const [bannerList, setBannerList] = useState([]);
+    useEffect(() => {
+        axiosInstance.get('library/banners/list/').then(res => {
+            setBannerList(res.data);
+        }).catch(err => console.log(err));
+    }, [])
     return (
         <Carousel autoplay draggable arrows={true} {...settings} >
-            <img className='carusel-img' src={carousel1} alt='carousel1' />
-            <img className='carusel-img' src={carousel2} alt='carousel1' />
-            <img className='carusel-img' src={carousel1} alt='carousel1' />
-            <img className='carusel-img' src={carousel2} alt='carousel1' />
+            {bannerList?.map(item => <img className='carusel-img' src={item.image} key={item.id} alt='carousel1' />)}
         </Carousel>
     )
 }

@@ -1,26 +1,27 @@
-.group-card-container{
+.group-card-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-content: space-between;
     gap: 7px;
 }
 
-.group-name-container{
-    margin-top: 30px;
-    margin-bottom: 10px;
+.group-name-container {
+    margin-top: 40px;
+    margin-bottom: 7px;
     display: flex;
     justify-content: space-between;
 }
 
-.group-name{
+.group-name {
     margin: 0;
+    margin-left: 5px;
     font-weight: 700;
     font-size: 24px;
     font-style: normal;
     color: #101010;
 }
 
-.group-show-all{
+.group-show-all {
     display: flex;
     align-items: center;
     background-color: #ffffff;
@@ -34,8 +35,7 @@
     cursor: pointer;
 }
 
-.group-show-all p{
+.group-show-all p {
     margin: 0;
     margin-bottom: 3px;
 }
-

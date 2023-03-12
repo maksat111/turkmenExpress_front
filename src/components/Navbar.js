@@ -5,6 +5,7 @@ import { SebedimContext } from "../context/Context";
 import './Navbar.css';
 import Logo from '../images/logo.png';
 import product from '../images/product.webp';
+import turkmen from '../images/turkmen.png';
 
 function Navbar() {
     const { sebedim, Increment, Decrement } = useContext(SebedimContext);
@@ -35,20 +36,19 @@ function Navbar() {
             border: true
         },
         {
-            icon: <AiOutlineGlobal style={iconStyle} />,
-            text: 'TM',
+            icon: <img src={turkmen} style={{ height: '30px' }} />,
             border: true
         },
-        {
-            icon: <AiOutlineCustomerService style={iconStyle} />,
-            text: 'Habarlaşmak',
-            border: true
-        },
-        {
-            icon: <AiOutlineHeart style={iconStyle} />,
-            text: 'Halananlar',
-            border: true
-        },
+        // {
+        //     icon: <AiOutlineCustomerService style={iconStyle} />,
+        //     text: 'Habarlaşmak',
+        //     border: true
+        // },
+        // {
+        //     icon: <AiOutlineHeart style={iconStyle} />,
+        //     text: 'Halananlar',
+        //     border: true
+        // },
         {
             icon: <AiOutlineUser style={iconStyle} />,
             text: 'Profil',
@@ -57,7 +57,7 @@ function Navbar() {
     ]
 
     const baha = sebedim[0] ? sebedim[0].baha.split(' ') : [0];
-    const jemi = sebedim[0].sany * baha[0];
+    const jemi = sebedim[0]?.sany * baha[0];
 
     return (
         <div className='navbar-container'>
@@ -73,12 +73,12 @@ function Navbar() {
                     {items.map(item =>
                         <div className='navbar-item' style={!item.border ? {} : { borderRight: '1px rgb(180, 180, 180) solid' }} key={item.text}>
                             {item.icon}
-                            <p>{item.text}</p>
+                            <p>{item?.text}</p>
                         </div>
                     )}
                 </div>
                 <div className='navbar-sebet' onClick={showDrawer}>
-                    <Badge count={sebedim[0].sany} >
+                    <Badge count={sebedim[0]?.sany} >
                         <AiOutlineShoppingCart style={iconStyle} />
                     </Badge>
                     <p> {jemi ? jemi : '0'} manat</p>

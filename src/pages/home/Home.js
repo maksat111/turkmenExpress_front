@@ -8,23 +8,13 @@ import down from '../../images/down.svg';
 import './Home.css';
 
 function Home() {
+    const [currentPage, setCurrentPage] = useState(1);
     return (
         <div className='home-container'>
             <div className='banner-container'>
-                <div className='banner-item1'>
-                    <Carusel />
-                </div>
-                <div className='banner-item2'>
-                    <img src={banner} alt='banner' />
-                </div>
+                <Carusel />
             </div>
-            <CardGroup groupName={'Taze harytlar'} />
-            <CardGroup groupName={'Arzanladyşdaky harytlar'} />
-            <CardGroup groupName={'Azyk harytlary'} />
-            <CardGroup groupName={'Täze ýyl harytlary'} />
-            <CardGroup groupName={'Saglyk we gözellik'} />
-            <CardGroup groupName={'Arassaçylyk serişdeleri'} />
-            <CardGroup groupName={'Çagalar üçin'} />
+            <CardGroup />
             <div className='button-container'>
                 <div className='continue-button'>
                     <p>Dowamy</p>
