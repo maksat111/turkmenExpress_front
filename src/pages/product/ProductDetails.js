@@ -1,16 +1,25 @@
-import { React, useState, useContext } from 'react';
+import { React, useState, useContext, useEffect } from 'react';
 import { Carousel } from 'antd';
 import { AiOutlineRight, AiOutlineLeft, AiFillCheckCircle, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { SebedimContext } from "../../context/Context";
 import product from '../../images/product.webp';
 import ahmadTea from '../../images/ahmadTea.webp';
-import './Product.css';
-import { Link } from 'react-router-dom';
+import './ProductDetails.css';
+import { Link, useParams } from 'react-router-dom';
 import Card from '../../components/Card';
+import { axiosInstance } from '../../config/axios';
 
 function Product() {
+    const [productDetail, setProductDetail] = useState(null);
     const { AddTo, Increment, Decrement } = useContext(SebedimContext);
-    const [numberProduct, setNumberProduct] = useState(0)
+    const [numberProduct, setNumberProduct] = useState(0);
+    const { id } = useParams();
+
+    useEffect(() => {
+        axiosInstance.get(`products/detail/${id}`).then((res) => {
+            setProductDetail(res.data);
+        }).catch(err => console.log(err));
+    }, [])
 
     const handleAddBasket = () => {
         setNumberProduct(1);
@@ -84,33 +93,31 @@ function Product() {
     return (
         <div className='product-container'>
             <div className='breadcrump'>
-                <Link to='/home/category'>Baş sahypa</Link>
+                <Link to='/'>Baş sahypa</Link>
                 <AiOutlineRight />
-                <Link to='/home/product'>Kategoriýalar</Link>
+                <Link to={`/category/${productDetail?.subcategory.category.id}`}>{productDetail?.subcategory.category.name_tk}</Link>
                 <AiOutlineRight />
-                <Link to='/home/product'>Azyk harytlary</Link>
+                <Link to={`/subcategory/${productDetail?.subcategory.id}`}>{productDetail?.subcategory.name_tk}</Link>
             </div>
-            <h2 className='product-category-name'>Azyk harytlary</h2>
+            <h2 className='product-category-name'>{productDetail?.subcategory.category.name_tk}</h2>
             <div className='product-details'>
                 <div className='product-image'>
                     <Carousel autoplay draggable arrows={true} {...settings} >
-                        <img className='carusel-img' src={product} alt='carousel1' />
-                        <img className='carusel-img' src={product} alt='carousel1' />
-                        <img className='carusel-img' src={product} alt='carousel1' />
-                        <img className='carusel-img' src={product} alt='carousel1' />
+                        {productDetail?.product_images.map((item) => <img className='carusel-img' src={`https://turkmenexpress.com.tm${item.image}`} alt='carousel1' />)}
                     </Carousel>
                 </div>
                 <div className='product-description'>
-                    <h2 className='product-description-product-name'>Чай черный Ahmad Tea English Tea No.1 25 пакетиков</h2>
+                    <h2 className='product-description-product-name'>{productDetail?.name_tk}</h2>
                     <Link className='brand-description'>
-                        <img src={ahmadTea} alt='ahmadTea' />
-                        <p>Ahmad Tea</p>
+                        <img src={`https://turkmenexpress.com.tm${productDetail?.brand?.logo}`} alt='brand' />
+                        <p>{productDetail?.brand?.name}</p>
                     </Link>
                     <div className='other-description'>
-                        <p>Kody: ST9974</p>
+                        <p>Agramy: {productDetail?.weight} kg</p>
                         <div className='product-description-stock'>
-                            <AiFillCheckCircle />
-                            <p>Stokda bar</p>
+                            {/* <AiFillCheckCircle />
+                            <p>Stokda bar</p> */}
+                            <p>{productDetail?.short_desc_tk}</p>
                         </div>
                     </div>
                     <p className='product-description-price'>35 manat</p>
@@ -122,6 +129,7 @@ function Product() {
                     </div>}
                 </div>
             </div>
+            <div className='long-decription'>{productDetail?.long_desc_tk}</div>
 
             <div className='product-description-cards'>
                 <Card />

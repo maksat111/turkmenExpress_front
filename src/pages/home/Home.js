@@ -1,25 +1,44 @@
 import { React, useState } from 'react';
-import { AiOutlineArrowDown, AiOutlineDown } from 'react-icons/ai';
+import { AiOutlineArrowDown, AiOutlineDown, AiOutlineLoading } from 'react-icons/ai';
 import Card from '../../components/Card';
 import CardGroup from '../../components/CardGroup';
 import Carusel from '../../components/Carusel';
+import { axiosInstance } from '../../config/axios';
 import banner from '../../images/banner.webp';
 import down from '../../images/down.svg';
 import './Home.css';
 
 function Home() {
-    const [currentPage, setCurrentPage] = useState(1);
+    const [nextPage, setNextPage] = useState(2);
+    const [nextData, setNextData] = useState([]);
+    const [nextLoading, setNextLoading] = useState(false);
+
+    const handleContinue = async () => {
+        try {
+            setNextLoading(true);
+            const data = await axiosInstance.get(`products/mainpage/list/?page=${nextPage}`);
+            setNextData(data.data.results);
+            if (data.data.next) {
+                setNextPage(nextPage + 1);
+            } else {
+                setNextPage(null)
+            }
+            setNextLoading(false);
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div className='home-container'>
             <div className='banner-container'>
                 <Carusel />
             </div>
-            <CardGroup />
+            <CardGroup nextData={nextData} />
             <div className='button-container'>
-                <div className='continue-button'>
-                    <p>Dowamy</p>
-                    <img src={down} alt='down' />
-                </div>
+                {nextPage && <div className='continue-button' onClick={handleContinue}>
+                    {nextLoading ? <AiOutlineLoading className='loading-icon' /> : <><p>Dowamy</p><img src={down} alt='down' /></>}
+                </div>}
             </div>
         </div>
     );

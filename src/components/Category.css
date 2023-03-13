@@ -5,7 +5,7 @@
     flex-direction: row;
     gap: 25px;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 70px auto;
 }
 
 .category-list-header {
@@ -124,4 +124,9 @@
 
 .ant-menu-submenu-title {
     margin: 0 4px;
+}
+
+.ant-menu-submenu-popup .ant-menu-vertical>.ant-menu-item {
+    display: flex;
+    height: 50px;
 }

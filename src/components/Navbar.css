@@ -1,5 +1,13 @@
+.navbar-fixed {
+    width: 100%;
+    display: block;
+    position: fixed;
+    z-index: 1001;
+    margin-top: -70px;
+}
+
 .navbar-container {
-    display: flex;
+    display: block;
     flex-direction: row;
     background-color: #ffffff;
     height: inherit;
@@ -22,6 +30,7 @@
     height: 80px;
     margin-top: 10px;
     margin-left: 65px;
+    cursor: pointer;
 }
 
 .navbar-logo-container {
@@ -188,4 +197,8 @@
     color: #f9f9f9;
     height: 35px;
     padding: 0 0 5px 0;
+}
+
+.ant-drawer {
+    z-index: 1002;
 }

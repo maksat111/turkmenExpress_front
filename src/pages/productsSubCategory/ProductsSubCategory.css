@@ -1,0 +1,28 @@
+.subcategory-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.filter-left-side {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.category-product-card-container {
+    padding-top: 25px;
+    margin-top: 25px;
+    border-top: 1px solid rgb(224, 224, 224);
+}
+
+.category-products-name {
+    font-size: 30px;
+}

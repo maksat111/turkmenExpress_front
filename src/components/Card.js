@@ -2,11 +2,10 @@ import { Badge } from 'antd';
 import { React, useContext, useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { baseUrl } from '../config/axios';
 import { SebedimContext } from "../context/Context";
 import './Card.css';
 
-function Card({ discount, product_name, product_price, old_price, new_product, image }) {
+function Card({ product_name, product_price, old_price, new_product, image, id }) {
     const { AddTo, Increment, Decrement } = useContext(SebedimContext);
     const [numberProduct, setNumberProduct] = useState(0);
 
@@ -26,7 +25,7 @@ function Card({ discount, product_name, product_price, old_price, new_product, i
     }
 
     return (
-        <Link to='/home/product' className='product-card-container'>
+        <Link to={`/products/${id}`} className='product-card-container'>
             <div className='card-image'>
                 <div className='card-status'>
                     {new_product && <div className='new'>Täze</div>}

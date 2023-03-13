@@ -1,19 +1,18 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
-import { AiOutlineRight, AiOutlineLeft, AiOutlineLoading } from 'react-icons/ai';
+import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
 import '../product/ProductDetails.css';
-import './ProductsCategory.css';
+import './ProductsSubCategory.css';
 import Card from '../../components/Card';
 import { axiosInstance } from '../../config/axios';
-import down from '../../images/down.svg';
-import '../home/Home.css';
+import { Carousel } from 'antd';
+
 function ProductsCategory() {
     const { id } = useParams();
     const [categoryProducts, setCategoryProducts] = useState([]);
     const [state, setState] = useState(null);
-    const [nextPage, setNextPage] = useState(2);
-    const [nextData, setNextData] = useState([]);
-    const [nextLoading, setNextLoading] = useState(false);
+    const [foundedCategory, setFoundedCategory] = useState(null);
+
 
     // useEffect(() => {
     //     const categories = JSON.parse(localStorage.getItem('turkmenExpress-categories'));
@@ -22,14 +21,17 @@ function ProductsCategory() {
     // }, [id])
 
     useEffect(() => {
-        axiosInstance.get(`products/category/${id}/list/`).then((res) => {
-            setCategoryProducts(res.data.results);
-            if (res.data.next == null) {
-                setNextPage(null)
-            }
+        axiosInstance.get(`products/subcategory/${id}/list/`).then((res) => {
+            setCategoryProducts(res.data);
             const categories = JSON.parse(localStorage.getItem('turkmenExpress-categories'));
-            const foundedCategory = categories[0].categories.find(item => item?.id == id);
-            setState(foundedCategory);
+            categories[0].categories.forEach(element => {
+                element.subcategories.forEach(item => {
+                    if (item.id == id) {
+                        setState(item);
+                        setFoundedCategory(element);
+                    }
+                })
+            });
         }).catch(err => console.log(err));
     }, [id]);
 
@@ -87,41 +89,20 @@ function ProductsCategory() {
         prevArrow: <SamplePrevArrow />
     }
 
-    const handleContinue = async () => {
-        try {
-            setNextLoading(true);
-            const data = await axiosInstance.get(`products/category/${id}/list/?page=${nextPage}`);
-            setCategoryProducts([...categoryProducts, ...data.data.results]);
-            if (data.data.next) {
-                setNextPage(nextPage + 1);
-            } else {
-                setNextPage(null)
-            }
-            setNextLoading(false);
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    const handleContinue = () => {
 
+    }
 
     return (
         <div className='category-products-container'>
             <div className='breadcrump'>
                 <Link to='/'>Baş sahypa</Link>
                 <AiOutlineRight />
+                <Link to={`/category/${foundedCategory?.id}`}>{foundedCategory?.name_tk}</Link>
+                <AiOutlineRight />
                 <Link>{state?.name_tk}</Link>
-                {/* <AiOutlineRight />
-                <Link to='/home/product'>Azyk harytlary</Link> */}
             </div>
-            <h2 className='product-category-name'>{state?.name_tk}</h2>
-            <div className='subcategory-container'>
-                {state?.subcategories?.map(item =>
-                    <Link to={`/subcategory/${item.id}`} className='breadcrump'>
-                        {item.name_tk}
-                    </Link>
-                )}
-
-            </div>
+            <h2 className='product-category-name' style={{ marginTop: '20px' }}>{state?.name_tk}</h2>
             <div className='category-product-card-container'>
                 <div className='filter-container'>
                     <div className='filter-left-side'>
@@ -149,11 +130,6 @@ function ProductsCategory() {
                         product_name={product.name_tk}
                         product_price={product.price}
                     />)}
-                </div>
-                <div className='button-container'>
-                    {nextPage && <div className='continue-button' onClick={handleContinue}>
-                        {nextLoading ? <AiOutlineLoading className='loading-icon' /> : <><p>Dowamy</p><img src={down} alt='down' /></>}
-                    </div>}
                 </div>
             </div>
         </div >

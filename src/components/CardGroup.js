@@ -5,14 +5,18 @@ import Card from './Card';
 import './CardGroup.css';
 import { axiosInstance } from '../config/axios';
 
-function CardGroup({ groupName }) {
-    const [homeData, setHomeData] = useState(null);
+function CardGroup({ nextData }) {
+    const [homeData, setHomeData] = useState([]);
 
     useEffect(() => {
         axiosInstance.get('products/mainpage/list/').then(res => {
             setHomeData(res.data.results);
         }).catch(err => console.log(err));
     }, []);
+
+    useEffect(() => {
+        setHomeData([...homeData, ...nextData]);
+    }, [nextData])
 
     return (
         <>
@@ -29,6 +33,7 @@ function CardGroup({ groupName }) {
                         {item.products.map(product =>
                             <Card
                                 key={product.id}
+                                id={product.id}
                                 image={product.main_image}
                                 product_name={product.name_tk}
                                 product_price={product.price}

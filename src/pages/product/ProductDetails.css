@@ -9,7 +9,7 @@
     width: 100%;
     height: auto;
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     padding: 24px 14px;
     gap: 20px;
 
@@ -154,4 +154,11 @@ a {
 
 .ant-carousel {
     width: 100%;
+}
+
+.long-decription {
+    background-color: #fff;
+    padding: 0 24px 24px 24px;
+    border-radius: 0 0 10px 10px;
+    font-size: 18px;
 }

@@ -144,9 +144,10 @@ const SebedimContextProvider = (props) => {
         localStorage.setItem("sebedim", JSON.stringify(sebedim));
     }, [sebedim]);
 
+    const [selectedCategory, setSelectedCategory] = useState();
 
     return (
-        <SebedimContext.Provider value={{ sebedim, Increment, Decrement, AddTo, AddToMany, Remove }}>
+        <SebedimContext.Provider value={{ sebedim, Increment, Decrement, AddTo, AddToMany, Remove, selectedCategory, setSelectedCategory }}>
             {props.children}
         </SebedimContext.Provider>
     );

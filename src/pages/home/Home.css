@@ -33,8 +33,25 @@
     max-width: 200px;
     padding: 10px 40px;
     gap: 10px;
+    transition: 0.4s;
 }
 
 .continue-button p {
     margin: 0
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+.loading-icon {
+    animation: spin 1s infinite linear;
+    font-size: 20px;
+    margin: 0 40px;
 }
