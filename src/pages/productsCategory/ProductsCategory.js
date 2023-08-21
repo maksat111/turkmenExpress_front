@@ -116,7 +116,8 @@ function ProductsCategory() {
             <h2 className='product-category-name'>{state?.name_tk}</h2>
             <div className='subcategory-container'>
                 {state?.subcategories?.map(item =>
-                    <Link to={`/subcategory/${item.id}`} className='breadcrump'>
+                    <Link to={`/subcategory/${item.id}`} className='subcategory'>
+                        <img src={`https://turkmenexpress.com.tm/media/${item.image}`} />
                         {item.name_tk}
                     </Link>
                 )}
@@ -152,7 +153,7 @@ function ProductsCategory() {
                 </div>
                 <div className='button-container'>
                     {nextPage && <div className='continue-button' onClick={handleContinue}>
-                        {nextLoading ? <AiOutlineLoading className='loading-icon' /> : <><p>Dowamy</p><img src={down} alt='down' /></>}
+                        {nextLoading ? <AiOutlineLoading className='loading-icon' /> : <p>Dowamy</p>}
                     </div>}
                 </div>
             </div>

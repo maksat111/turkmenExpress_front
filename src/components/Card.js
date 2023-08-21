@@ -33,12 +33,12 @@ function Card({ product_name, product_price, old_price, new_product, image, id }
                 </div>
                 <img src={image} alt='product' />
                 <div className='basket-container'>
-                    {numberProduct == 0 && <><div className='basket-icon'>
+                    {/* {numberProduct == 0 && <><div className='basket-icon'>
                         <AiOutlineShoppingCart />
                     </div>
                         <div className='add-basket' onClick={handleAddBasket}>
                             Sebede goş
-                    </div></>}
+                    </div></>} */}
                     {numberProduct > 0 && <div className='increaseDecrease'>
                         <AiOutlineMinus className='increase-decrease-icons' onClick={handleDecrease} />
                         {numberProduct}
@@ -50,6 +50,7 @@ function Card({ product_name, product_price, old_price, new_product, image, id }
                 <p className='product-name'>{product_name}</p>
                 <p className='product-price'>{Math.round(product_price * 100) / 100} TMT</p>
                 {old_price && <p className='product-old-price'>40 manat</p>}
+                <div className='add-basket-new'>Sebede gos</div>
             </div>
         </Link >
     );

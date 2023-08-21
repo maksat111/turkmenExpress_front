@@ -103,7 +103,7 @@ function Product() {
             <div className='product-details'>
                 <div className='product-image'>
                     <Carousel autoplay draggable arrows={true} {...settings} >
-                        {productDetail?.product_images.map((item) => <img className='carusel-img' src={`https://turkmenexpress.com.tm${item.image}`} alt='carousel1' />)}
+                        {productDetail?.product_images.map((item) => <img className='carusel-img' src={`${item.image}`} alt='carousel1' />)}
                     </Carousel>
                 </div>
                 <div className='product-description'>

@@ -37,7 +37,7 @@ function Home() {
             <CardGroup nextData={nextData} />
             <div className='button-container'>
                 {nextPage && <div className='continue-button' onClick={handleContinue}>
-                    {nextLoading ? <AiOutlineLoading className='loading-icon' /> : <><p>Dowamy</p><img src={down} alt='down' /></>}
+                    {nextLoading ? <AiOutlineLoading className='loading-icon' /> : <p>Dowamy</p>}
                 </div>}
             </div>
         </div>

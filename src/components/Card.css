@@ -57,7 +57,7 @@ a {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     height: 40px;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
@@ -70,7 +70,7 @@ a {
     -webkit-line-clamp: 1;
     position: relative;
     line-height: 26px;
-    margin: -10px 0 0;
+    margin: -10px 0 10px;
 }
 
 .product-old-price {
@@ -146,4 +146,20 @@ a {
 
 .product-card-container:hover .basket-icon {
     display: none;
+}
+
+.add-basket-new {
+    border: black 1px solid;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-weight: 600;
+    transition: 0.4s;
+}
+
+.add-basket-new:hover {
+    background-color: black;
+    color: white;
 }
